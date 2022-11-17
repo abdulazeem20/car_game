@@ -1,0 +1,7 @@
+$breakingPointWidth: (m: 575.98px, l: 767.98px, xl: 991.98px);
+
+@mixin responsiveMedia($width) {
+    @media screen and (min-width: map-get($breakingPointWidth, $width)) {
+        @content;
+    }
+}

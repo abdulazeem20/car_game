@@ -1,0 +1,9 @@
+%btn {
+    color     : #fff;
+    background: #000;
+    border    : .3rem solid red;
+}
+
+@mixin transition {
+    transition: .5s ease-in-out all;
+}

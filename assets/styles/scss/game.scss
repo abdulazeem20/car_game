@@ -1,0 +1,12 @@
+@import './partials/autoload';
+@import './partials/gameContainer';
+
+main {
+    display    : grid;
+    place-items: center;
+
+    .game-container {
+        @include gameContainer;
+    }
+
+}

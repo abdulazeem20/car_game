@@ -1,0 +1,41 @@
+@import './road';
+
+@mixin gameContainer {
+    width : 90%;
+    height: 80%;
+
+    @include responsiveMedia(m) {
+        width: 60%;
+    }
+
+    @include responsiveMedia(xl) {
+        width: 600px;
+    }
+
+    >div {
+        width    : 100%;
+        // border: 1px solid black;
+    }
+
+    .head {
+        height: 30px;
+    }
+
+    .road {
+        @include road();
+    }
+
+    .tail {
+        height         : 30px;
+        overflow       : hidden;
+        padding        : 1.5rem;
+        display        : flex;
+        justify-content: center;
+        align-items    : center;
+
+        button {
+            @extend %btn;
+        }
+    }
+
+}
