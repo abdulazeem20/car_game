@@ -41,15 +41,28 @@ function gameTail () {
   element.find('.right-control').on('click', function () {
     let parent = $(this).parents('.game-container')
     let car = parent.find('.car.user')
-    let width = car[0].clientWidth
+
+    let width = car[0].offsetWidth
+
+    let road = $('.tracks')
+
+    let roadOffsetLeft = road.offset().left
+
+    let roadWidth = road[0].offsetWidth
+
+    let spaceToCarLeft = car.offset().left - roadOffsetLeft
+    let spaceToCarRight = roadWidth - (spaceToCarLeft + width)
+    let nextSpaceTocarRight = spaceToCarRight - width
+
+    // console.log({
+    //   right: spaceToCarRight,
+    //   carWidth: width,
+    //   roadOffsetLeft: roadOffsetLeft,
+    //   nextSpaceTocarRight: spaceToCarRight - width
+    // })
 
     let marginLeft = car.css('margin-left').replace('px', '')
-    //console.log(marginLeft);
-    let road = $('.road')
-    console.log(road[0].clientWidth)
-    if (marginLeft >= 192 || Number(marginLeft) + Number(width) > 198) {
-      return
-    }
+    if (nextSpaceTocarRight <= 0) return
     car.css('margin-left', Number(marginLeft) + Number(width) + 'px')
   })
 
@@ -57,12 +70,23 @@ function gameTail () {
     let parent = $(this).parents('.game-container')
     let car = parent.find('.car.user')
     let width = car[0].clientWidth
-    let marginLeft = car.css('margin-left').replace('px', '')
 
-    //console.log(marginLeft);
-    if (marginLeft <= -48 || Number(marginLeft) - Number(width) < -54) {
-      return
-    }
+    let road = $('.tracks')
+
+    let roadOffsetLeft = road.offset().left
+
+    let spaceToCarLeft = car.offset().left - roadOffsetLeft
+    let marginLeft = car.css('margin-left').replace('px', '')
+    let nextSpaceTocarLeft = spaceToCarLeft - width
+
+    // console.log({
+    //   left: spaceToCarLeft,
+    //   carWidth: width,
+    //   roadOffsetLeft: roadOffsetLeft,
+    //   nextSpaceTocarLeft: spaceToCarLeft - width
+    // })
+
+    if (nextSpaceTocarLeft <= 0) return
     car.css('margin-left', Number(marginLeft) - Number(width) + 'px')
   })
   return element

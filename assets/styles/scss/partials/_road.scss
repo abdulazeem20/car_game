@@ -1,7 +1,8 @@
 @mixin road {
     height    : calc(100% - 60px);
     background: $roadColor;
-    position  : relative;
+
+    position: relative;
 
     .tracks {
         position             : absolute;
@@ -10,6 +11,7 @@
         display              : grid;
         grid-template-columns: repeat(3, 1fr);
         place-items          : center;
+        overflow             : hidden !important;
 
         .track {
             width     : .3rem;
@@ -23,7 +25,7 @@
         width   : 1.5rem;
         height  : 1rem;
         bottom  : 2rem;
-        left    : 20%;
+        left    : 50%;
 
         @include transition;
         transition-duration: .3s;

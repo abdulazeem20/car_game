@@ -1,2 +1,2 @@
-import { Main } from "./modules/GameComponent.js";
-Main();
+import { Main } from './components/Game.js'
+Main()
